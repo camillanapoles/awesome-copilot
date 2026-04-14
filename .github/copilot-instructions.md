@@ -1,3 +1,19 @@
+## Strategic Flow Controller — Auto-Activation
+
+**All Copilot agents in this repository must follow the 10-phase strategic automation pipeline.**
+
+At the start of every session or task, any agent must:
+
+1. Load the flow controller context from `agents/flow-controller.agent.md` and identify the current phase.
+2. Apply the quality gate criteria defined in `instructions/quality-gates.instructions.md` before advancing to the next phase.
+3. Enforce traceability requirements from `instructions/end-to-end-traceability.instructions.md` for every change.
+4. Route unexpected failures through `agents/failure-triage.agent.md` instead of silently continuing.
+5. Never skip a phase or transition without explicit gate verification.
+
+The `hooks/flow-checkpoint/` hook automatically persists pipeline state at session boundaries and validates gates before any tool use — no manual invocation is required.
+
+---
+
 The following instructions are only to be applied when performing a code review.
 
 ## README updates

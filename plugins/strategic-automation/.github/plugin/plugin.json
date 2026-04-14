@@ -1,7 +1,7 @@
 {
   "name": "strategic-automation",
   "description": "End-to-end strategic automation framework with a 10-phase flow controller, quality gates, failure triage, traceability enforcement, and pipeline checkpointing. Eliminates gaps in the software delivery lifecycle from discovery through monitoring.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Awesome Copilot Community"
   },
@@ -23,5 +23,13 @@
   ],
   "skills": [
     "./skills/strategic-flow-controller/"
+  ],
+  "instructions": [
+    "./instructions/strategic-flow-auto-activate.instructions.md",
+    "./instructions/quality-gates.instructions.md",
+    "./instructions/end-to-end-traceability.instructions.md"
+  ],
+  "hooks": [
+    "./hooks/flow-checkpoint/"
   ]
 }
