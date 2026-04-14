@@ -538,6 +538,12 @@
       "version": "1.0.0"
     },
     {
+      "name": "strategic-automation",
+      "source": "strategic-automation",
+      "description": "End-to-end strategic automation framework with a 10-phase flow controller, quality gates, failure triage, traceability enforcement, and pipeline checkpointing. Eliminates gaps in the software delivery lifecycle from discovery through monitoring.",
+      "version": "1.0.0"
+    },
+    {
       "name": "structured-autonomy",
       "source": "structured-autonomy",
       "description": "Premium planning, thrifty implementation",
