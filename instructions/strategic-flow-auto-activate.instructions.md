@@ -41,9 +41,9 @@ When any Copilot agent begins a task:
 ## State Persistence
 
 The `hooks/flow-checkpoint/` hook automatically:
+- Initialises the `.copilot-tracking/` directory and `flow-state.json` on session start (`sessionStart` event, `CHECKPOINT_MODE=init`). If no active pipeline exists, the flow controller will create it on first task receipt.
 - Saves pipeline state to `.copilot-tracking/flow-state.json` on session end.
 - Validates gate criteria before any tool use (`preToolUse`).
-- Initialises the pipeline state at session start if no state file exists.
 
 ## Zero-Gap Guarantee
 
