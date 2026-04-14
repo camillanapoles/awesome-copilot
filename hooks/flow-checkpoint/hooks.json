@@ -1,6 +1,17 @@
 {
   "version": 1,
   "hooks": {
+    "sessionStart": [
+      {
+        "type": "command",
+        "bash": ".github/hooks/flow-checkpoint/checkpoint.sh",
+        "cwd": ".",
+        "env": {
+          "CHECKPOINT_MODE": "init"
+        },
+        "timeoutSec": 30
+      }
+    ],
     "preToolUse": [
       {
         "type": "command",

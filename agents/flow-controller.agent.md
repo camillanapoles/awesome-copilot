@@ -44,6 +44,44 @@ PHASE 10: MONITORING
 
 ---
 
+## Auto-Invocation
+
+This agent is a **meta-agent** that activates automatically for every Copilot task through the global instruction `instructions/strategic-flow-auto-activate.instructions.md` and the `hooks/flow-checkpoint/` hook. You do **not** need to invoke it manually.
+
+### How Auto-Activation Works
+
+1. **On session start** — the `flow-checkpoint` hook initialises or resumes the pipeline state from `.copilot-tracking/flow-state.json`.
+2. **Before every tool use** — the `validate-gates.sh` hook verifies the current phase gate has been met before allowing file edits or command execution.
+3. **On session end** — the `checkpoint.sh` hook persists the current phase and gate results so the next session resumes seamlessly.
+4. **Global instruction** — `instructions/strategic-flow-auto-activate.instructions.md` (with `applyTo: '**'`) injects the phase reference and delegation rules into every agent context regardless of file type.
+
+### Installing the Auto-Activation Framework
+
+```bash
+# Install via Copilot CLI (installs all agents, skills, instructions, and hooks)
+gh copilot plugin install strategic-automation
+
+# Or copy individual components manually:
+cp agents/flow-controller.agent.md   .github/copilot/agents/
+cp agents/failure-triage.agent.md    .github/copilot/agents/
+cp instructions/quality-gates.instructions.md              .github/copilot/
+cp instructions/end-to-end-traceability.instructions.md    .github/copilot/
+cp instructions/strategic-flow-auto-activate.instructions.md .github/copilot/
+cp -r hooks/flow-checkpoint/ .github/hooks/
+```
+
+### Calling a Specific Agent While Keeping the Pipeline Active
+
+Any agent invoked inside this framework must report its result back to the flow controller so the gate can be evaluated:
+
+```
+@flow-controller  → orchestrates the full pipeline
+@failure-triage   → receives failures from any phase
+@<specialist>     → delegated sub-task in a specific phase
+```
+
+---
+
 ## Startup Protocol
 
 When activated, always begin with:
