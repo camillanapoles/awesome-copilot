@@ -34,6 +34,8 @@ See [CONTRIBUTING.md](../CONTRIBUTING.md#adding-agentic-workflows) for guideline
 | Name | Description | Triggers |
 | ---- | ----------- | -------- |
 | [Daily Issues Report](../workflows/daily-issues-report.md) | Generates a daily summary of open issues and recent activity as a GitHub issue | schedule |
+| [Fork Sync PR Event Validator](../workflows/fork-sync-pr-event-validator.md) | Agentic workflow triggered on every pull request event (opened, synchronize, reopened, ready_for_review, closed) that validates event capture completeness and WAL (Write-Ahead Log) continuity for fork sync operations. Posts a structured validation report as a PR comment and blocks merge when critical gaps are detected. | pull_request |
+| [Fork Upstream Sync Check](../workflows/fork-upstream-sync-check.md) | Scheduled agentic workflow that detects how many commits a fork has fallen behind its upstream repository and opens a summary issue when divergence exceeds a configurable threshold. Helps maintainers stay on top of upstream changes before conflicts accumulate. | schedule, workflow_dispatch |
 | [OSPO Contributors Report](../workflows/ospo-contributors-report.md) | Monthly contributor activity metrics across an organization's repositories. | schedule, workflow_dispatch |
 | [OSPO Organization Health Report](../workflows/ospo-org-health.md) | Comprehensive weekly health report for a GitHub organization. Surfaces stale issues/PRs, merge time analysis, contributor leaderboards, and actionable items needing human attention. | schedule, workflow_dispatch |
 | [OSPO Stale Repository Report](../workflows/ospo-stale-repos.md) | Identifies inactive repositories in your organization and generates an archival recommendation report. | schedule, workflow_dispatch |
